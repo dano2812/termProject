@@ -12,3 +12,7 @@
 .job {
     display: none;
 }
+
+.jobbtn:hover {
+    background-color: rgb(226 243 247);
+}
