@@ -25,5 +25,5 @@ function showSlides() {
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundAttachment = "fixed";
     document.body.style.backgroundSize = "cover";*/
-    setTimeout(showSlides, 10000);
+    setTimeout(showSlides, 6000);
 }
