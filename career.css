@@ -11,6 +11,10 @@
 
 .job {
     display: none;
+    max-width: 60%;
+}
+.jobbtn {
+    max-width: 60%;
 }
 
 .jobbtn:hover {
