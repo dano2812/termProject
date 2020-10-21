@@ -1,0 +1,14 @@
+.leftTop {
+    position: relative;
+    top: 0;
+    left: 20%;
+    z-index: 1;
+}
+
+.leftTop h2{
+    padding: 40px;
+}
+
+.job {
+    display: none;
+}
