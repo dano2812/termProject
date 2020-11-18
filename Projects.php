@@ -112,7 +112,7 @@
 <div  class="leftMiddle">
     <?php
     if(!$edit) { ?>
-        <form method="post">
+        <form action="Projects.php" method="post">
             <div class="form-group projname">
                 <label for="exampleInputEmail1">Project name</label>
                 <input type="text" name="Name" class="form-control" id="ProjName" aria-describedby="emailHelp">
@@ -181,7 +181,7 @@
                         $id = $project->getId();?>
                         <input type="hidden" name="edit<?=$id?>" value="<?=$id?>" class="form-control projname/>
                         <button type="submit" class="btn btn-primary">Edit</button>
-                    </form>
+                    </form>1
                     <form action="Projects.php" method="POST" id="form1">
                         <input type="hidden" name="delete<?=$id?>" value="<?=$id?>" class="form-control projdesription/>
                         <button type="submit" class="btn btn-primary">Delete</button>
