@@ -11,8 +11,6 @@ class DBStorage extends AStorage
     private string $db = "projects";
     private string $host = "localhost";
 
-    public int $projectCnt;
-
     private PDO $pdo;
     public function __construct()
     {
@@ -23,7 +21,6 @@ class DBStorage extends AStorage
         } catch (PDOException $e){
             echo 'Connection failed: ' . $e->getMessage();
         }
-        $projectCnt = 0;
 
     }
     public function getAll():array
@@ -44,8 +41,7 @@ class DBStorage extends AStorage
 
     public function createProject(string $name, string $description): Project
     {
-        $project = new Project($name, $description);
-        return $project;
+        return new Project($name, $description);
     }
 
     public function saveProject(Project $project)
@@ -59,15 +55,14 @@ class DBStorage extends AStorage
         $sql = 'DELETE FROM projectstable WHERE id=?';
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([$id]);
-
     }
-
+/*
     public function deleteProjectByName($name)
     {
         $sql = 'DELETE FROM projectstable WHERE name=?';
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([$name]);
-    }
+    }*/
 
     public function updateProject(int $id, string $name, string $description)
     {

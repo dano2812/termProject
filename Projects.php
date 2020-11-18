@@ -131,8 +131,11 @@
         <div>
             <?php
             if(!$edit) { ?>
-                <h2><?=$project->getTitle()?></h2>
-                <p><?=$project->getDescription()?></p>
+                    <div class="projdesription">
+                        <h2><?=$project->getTitle()?></h2>
+                        <p><?=$project->getDescription()?></p>
+                    </div>
+
 
                 <form action="Projects.php" method="POST" id="form1">
                     <?php
@@ -168,9 +171,10 @@
                     </form>
                 <?php
                 } else {?>
-                    <h2><?=$project->getTitle()?></h2>
-                    <p><?=$project->getDescription()?></p>
-
+                        <div class="projdesription">
+                            <h2><?=$project->getTitle()?></h2>
+                            <p><?=$project->getDescription()?></p>
+                        </div>
                     <form action="Projects.php" method="POST" id="form1">
                         <?php
                         $id = $project->getId();?>
