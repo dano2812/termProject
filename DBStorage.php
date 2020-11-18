@@ -33,8 +33,8 @@ class DBStorage extends AStorage
         $projectCnt = 0;
         while($row = $stmt->fetch())
         {
-            $project = new Project($row['Name'],$row['Description']);
-            $project->setId($row['ID']);
+            $project = new Project($row['name'],$row['description']);
+            $project->setId($row['id']);
             $projects[] = $project;
             $projectCnt = $projectCnt +1;
         }
@@ -50,13 +50,13 @@ class DBStorage extends AStorage
 
     public function saveProject(Project $project)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO projectstable (Name, Description) VALUES(?,?)");
+        $stmt = $this->pdo->prepare("INSERT INTO projectstable (name, description) VALUES(?,?)");
         $stmt->execute([$project->getTitle(), $project->getDescription()]);
     }
 
     public function deleteProjectById($id)
     {
-        $sql = 'DELETE FROM projectstable WHERE ID=?';
+        $sql = 'DELETE FROM projectstable WHERE id=?';
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([$id]);
 
@@ -64,14 +64,14 @@ class DBStorage extends AStorage
 
     public function deleteProjectByName($name)
     {
-        $sql = 'DELETE FROM projectstable WHERE Name=?';
+        $sql = 'DELETE FROM projectstable WHERE name=?';
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([$name]);
     }
 
     public function updateProject(int $id, string $name, string $description)
     {
-        $sql = 'UPDATE projectstable SET projectstable.Name=?, projectstable.Description=? WHERE projectstable.ID=?';
+        $sql = 'UPDATE projectstable SET projectstable.name=?, projectstable.description=? WHERE projectstable.id=?';
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([$name, $description, $id]);
     }
