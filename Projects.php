@@ -22,13 +22,14 @@
         }
     }
 
-    if(isset($_POST['Name']) && isset($_POST['Description']))
+    if(isset($_POST['Name']) && isset($_POST['Description']) && !empty($_POST['Name']) && !empty($_POST['Description']))
     {
         $Storage->saveProject($Storage->createProject($_POST['Name'], $_POST['Description']));
         $projects = $Storage->getAll();
     }
 
-    if(isset($_POST['NameEdit']) && isset($_POST['DescriptionEdit']) && isset($_POST['ID']))
+    if(isset($_POST['NameEdit']) && isset($_POST['DescriptionEdit']) && isset($_POST['ID']) &&
+        !empty($_POST['NameEdit']) && !empty($_POST['DescriptionEdit']) && !empty($_POST['ID']))
     {
         $Storage->updateProject($_POST['ID'], $_POST['NameEdit'], $_POST['DescriptionEdit']);
         $projects = $Storage->getAll();

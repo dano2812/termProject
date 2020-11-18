@@ -4,7 +4,7 @@ declare(strict_types=1);
 require "AStorage.php";
 require "Project.php";
 
-class DBStorage extends AStorage
+class DBStorage
 {
     private string $user = "root";
     private string $pass = "dtb456";
