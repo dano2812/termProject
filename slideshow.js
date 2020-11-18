@@ -1,10 +1,12 @@
 var slideIndex = -1;
 var slidesArr = ["building1.jpg", "building2.jpg", "building3.jpg", "building4.jpg"];
+var stopLastTime = 0;
 showSlides();
 
 // Next/previous controls
 function plusSlides(n) {
-    showSlides(slideIndex += n);
+    showSlides(n);
+    stopLastTime = stopLastTime+1;
 }
 
 // Thumbnail image controls
@@ -21,9 +23,11 @@ function showSlides() {
     slideIndex++;
     if (slideIndex > slides.length) {slideIndex = 1}
     slides[slideIndex-1].style.display = "block";
-    /*document.body.style.backgroundImage = slidesArr[slideIndex-1];
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.backgroundAttachment = "fixed";
-    document.body.style.backgroundSize = "cover";*/
-    setTimeout(showSlides, 6000);
+
+    if(stopLastTime == 0)
+    {
+        setTimeout(showSlides, 4000);
+    }
+    if( stopLastTime > 0)
+        stopLastTime--;
 }
