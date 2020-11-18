@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 class AStorage
 {
-    private string $filepath = "projects.csv";
+    private string $filepath = "proj.csv";
 
     /**
      * @return Project[]

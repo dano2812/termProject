@@ -1,6 +1,5 @@
 <?php
-require "AStorage.php";
-$Astorage = new AStorage();
+
 
 class Project
 {
