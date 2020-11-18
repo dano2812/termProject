@@ -47,22 +47,22 @@
         <!-- Full-width images with number and caption text -->
         <div class="mySlides fade">
             <div class="numbertext">1 / 4</div>
-            <img src="building4.jpg" style="width:100%" alt="img1">
+            <img src="Resources/building4.jpg" style="width:100%" alt="img1">
             <!--<div class="text">Caption One</div>-->
         </div>
         <div class="mySlides fade">
             <div class="numbertext">2 / 4</div>
-            <img src="building2.jpg" style="width:100%" alt="img2">
+            <img src="Resources/building2.jpg" style="width:100%" alt="img2">
             <!--div class="text">Caption Two</div>-->
         </div>
         <div class="mySlides fade">
             <div class="numbertext">3 / 4</div>
-            <img src="building3.jpg" style="width:100%" alt="img3">
+            <img src="Resources/building3.jpg" style="width:100%" alt="img3">
             <!--<div class="text">Caption Three</div>-->
         </div>
         <div class="mySlides fade">
             <div class="numbertext">4 / 4</div>
-            <img src="building1.jpg" style="width:100%" alt="img4">
+            <img src="Resources/building1.jpg" style="width:100%" alt="img4">
             <!--<div class="text">Caption Three</div>-->
         </div>
     </div>
