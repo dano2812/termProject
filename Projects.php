@@ -59,6 +59,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="contact.css">
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="Projects.css">
     <!-- jQuery and JS bundle w/ Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -112,16 +113,21 @@
     </div>
 </div>
 
-<div  class="centered">
+<div  class="leftMiddle">
     <?php
     if(!$edit) { ?>
-    <form action="Projects.php" method="post">
-        <label>Project Name</label>
-        <input type="text" name="Name">
-        <label>Project Description</label>
-        <input type="text" name="Description">
-        <input type="submit" value="Save">
-    </form>
+        <form method="post">
+            <div class="form-group projname">
+                <label for="exampleInputEmail1">Project name</label>
+                <input type="text" name="Name" class="form-control" id="ProjName" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group projdesription">
+                <label for="exampleInputPassword1">Project description</label>
+                <input type="text" name="Description" class="form-control" id="ProjDescription">
+            </div>
+
+            <button type="submit" class="btn btn-light">Save</button>
+        </form>
     <?php
     }?>
 
@@ -137,31 +143,33 @@
                     <?php
                     $id = $project->getId();?>
                     <input type="hidden" name="edit<?=$id?>" value="<?=$id?>" />
-                    <button type="submit">Edit</button>
+                    <button type="submit" class="btn btn-light">Edit</button>
                 </form>
 
-                <form action="Projects.php" method="POST" id="form1">
+                <form action="Projects.php" method="POST" id="form2">
                     <input type="hidden" name="delete<?=$id?>" value="<?=$id?>" />
-                    <button type="submit">Delete</button>
+                    <button type="submit" class="btn btn-light">Delete</button>
                 </form>
-
-
             <?php
             } else {
                 $id = $project->getId();
                 if($editId == $id){ ?>
                     <form action="Projects.php" method="post">
-                        <label>Project Name</label>
-                         <input type="text" name="NameEdit" value="<?=$project->getTitle()?>">
-                        <label>Project Description</label>
-                        <input type="text" name="DescriptionEdit" value="<?=$project->getDescription()?>">
-                        <input type="hidden" name="ID" value="<?=$project->getId()?>" />
-                        <input type="submit" value="Save">
+                        <div class="form-group ">
+                            <label for="exampleInputEmail1">Project name</label>
+                            <input type="text" name="NameEdit" class="form-control projname" value="<?=$project->getTitle()?>">
+                        </div>
+                        <div class="form-group ">
+                            <label>Project Description</label>
+                             <input type="text" name="DescriptionEdit" class="form-control projdesription" value="<?=$project->getDescription()?>">
+                             <input type="hidden" name="ID" value="<?=$project->getId()?>" />
+                        </div>
+                        <button type="submit" class="btn btn-light">Save</button>
                     </form>
 
                     <form action="Projects.php" method="POST" id="form1">
                         <input type="hidden" name="delete<?=$project->getId()?>" value="<?=$project->getId()?>" />
-                        <button type="submit">Delete</button>
+                        <button type="submit" class="btn btn-light">Delete</button>
                     </form>
                 <?php
                 } else {?>
@@ -171,25 +179,19 @@
                     <form action="Projects.php" method="POST" id="form1">
                         <?php
                         $id = $project->getId();?>
-                        <input type="hidden" name="edit<?=$id?>" value="<?=$id?>" />
-                        <button type="submit">Edit</button>
+                        <input type="hidden" name="edit<?=$id?>" value="<?=$id?>" class="form-control projname/>
+                        <button type="submit" class="btn btn-light">Edit</button>
                     </form>
-
                     <form action="Projects.php" method="POST" id="form1">
-                        <input type="hidden" name="delete<?=$id?>" value="<?=$id?>" />
-                        <button type="submit">Delete</button>
+                        <input type="hidden" name="delete<?=$id?>" value="<?=$id?>" class="form-control projdesription/>
+                        <button type="submit" class="btn btn-light">Delete</button>
                     </form>
                 <?php
                     }
                 }?>
-
-
             <?php } ?>
         </div>
-
 </div>
-
-
 
 </body>
 </html>

@@ -1,0 +1,14 @@
+.leftMiddle {
+    position: relative;
+    top: 0;
+    left: 20%;
+    z-index: 1;
+    margin-top: 10px;
+}
+
+.projname {
+    max-width: 30%;
+}
+.projdesription {
+    max-width: 60%;
+}
