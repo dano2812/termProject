@@ -3,17 +3,38 @@
     //require "Project.php";
     $Storage = new DBStorage();
 
-    $edit = false;
+    $edit = FALSE;
     $editIdx = -1;
     $editId = -1;
 
+    $projects = $Storage->getAll();
+
+    for($i = 0; $i < count($projects); $i++)
+    {
+        $id = $projects[$i]->getId();
+        $str = "edit$id";
+        if (isset($_POST[$str])) {
+            $editIdx = $i;
+            $editId = $id;
+            $edit = TRUE;
+            $projects = $Storage->getAll();
+            break;
+        }
+    }
 
     if(isset($_POST['Name']) && isset($_POST['Description']))
     {
         $Storage->saveProject($Storage->createProject($_POST['Name'], $_POST['Description']));
+        $projects = $Storage->getAll();
     }
 
-    $projects = $Storage->getAll();
+    if(isset($_POST['NameEdit']) && isset($_POST['DescriptionEdit']) && isset($_POST['ID']))
+    {
+        $Storage->updateProject($_POST['ID'], $_POST['NameEdit'], $_POST['DescriptionEdit']);
+        $projects = $Storage->getAll();
+    }
+
+
 
     for($i = 0; $i < count($projects); $i++)
     {
@@ -26,18 +47,7 @@
         }
     }
 
-    for($i = 0; $i < count($projects); $i++)
-    {
-        $id = $projects[$i]->getId();
-        $str = "edit$id";
-        if (isset($_POST[$str])) {
-            $editIdx = $i;
-            $editId = $id;
-            $edit = true;
-            $projects = $Storage->getAll();
-            break;
-        }
-    }
+
 
     ?>
 
@@ -142,9 +152,10 @@
                 if($editId == $id){ ?>
                     <form action="Projects.php" method="post">
                         <label>Project Name</label>
-                         <input type="text" name="Name" value="<?=$project->getTitle()?>">
+                         <input type="text" name="NameEdit" value="<?=$project->getTitle()?>">
                         <label>Project Description</label>
-                        <input type="text" name="Description" value="<?=$project->getDescription()?>">
+                        <input type="text" name="DescriptionEdit" value="<?=$project->getDescription()?>">
+                        <input type="hidden" name="ID" value="<?=$project->getId()?>" />
                         <input type="submit" value="Save">
                     </form>
 

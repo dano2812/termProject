@@ -56,14 +56,23 @@ class DBStorage extends AStorage
 
     public function deleteProjectById($id)
     {
-        //DELETE FROM MyGuests WHERE id=3
-        $sql = "DELETE FROM projectstable WHERE ID=$id";
-        $stmt = $this->pdo->query("$sql");
+        $sql = 'DELETE FROM projectstable WHERE ID=?';
+        $stmt= $this->pdo->prepare($sql);
+        $stmt->execute([$id]);
+
     }
 
     public function deleteProjectByName($name)
     {
-        $sql = "DELETE FROM projectstable WHERE Name=$name";
-        $stmt = $this->pdo->query("$sql");
+        $sql = 'DELETE FROM projectstable WHERE Name=?';
+        $stmt= $this->pdo->prepare($sql);
+        $stmt->execute([$name]);
+    }
+
+    public function updateProject(int $id, string $name, string $description)
+    {
+        $sql = 'UPDATE projectstable SET projectstable.Name=?, projectstable.Description=? WHERE projectstable.ID=?';
+        $stmt= $this->pdo->prepare($sql);
+        $stmt->execute([$name, $description, $id]);
     }
 }
