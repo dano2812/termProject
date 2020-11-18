@@ -24,7 +24,7 @@ class AStorage
         return $projects;
     }
 
-    public function createProject(string $title, string $description) : void
+    public function createProject(string $title, string $description) : Project
     {
         if(($handle = fopen($this->filepath, "a")) !==false)
         {
