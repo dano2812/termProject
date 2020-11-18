@@ -31,5 +31,7 @@ class AStorage
             fputcsv($handle, [$title, $description], ",");
             fclose($handle);
         }
+
+        return new Project($title, $description);
     }
 }

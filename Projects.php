@@ -2,9 +2,9 @@
     require "DBStorage.php";
     $Storage = new DBStorage();
 
-    if(isset($_POST['name']))
+    if(isset($_POST['Name']))
     {
-        $Storage->saveProject($Storage->createProject($_POST['name'], $_POST['description']));
+        $Storage->saveProject($Storage->createProject($_POST['Name'], $_POST['Description']));
     }
 
     $projects = $Storage->getAll();
@@ -64,8 +64,8 @@
     </div>
 </div>
 
-<div class="centered">
-    <form method="post">
+<div  class="centered">
+    <form action="Projects.php" method="post">
         <label>Project Name</label>
         <input type="text" name="Name">
         <label>Project Description</label>
@@ -78,6 +78,7 @@
         <div>
             <h2><?=$project->getTitle()?></h2>
             <p><?=$project->getDescription()?></p>
+            <button name=""
         </div>
     <?php } ?>
 </div>
