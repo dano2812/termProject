@@ -3,13 +3,13 @@
 
 class Project
 {
-    private string $title;
+    private string $name;
     private string $description;
-    private int $id;
+    private $id;
 
     public function __construct(string $title,string $description)
     {
-        $this->title = $title;
+        $this->name = $title;
         $this->description = $description;
         $this->id = -1;
     }
@@ -20,7 +20,7 @@ class Project
      */
     public function getTitle(): string
     {
-        return $this->title;
+        return $this->name;
     }
 
     /**
@@ -37,6 +37,14 @@ class Project
     public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 
 }

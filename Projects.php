@@ -1,13 +1,44 @@
 <?php
     require "DBStorage.php";
+    //require "Project.php";
     $Storage = new DBStorage();
 
-    if(isset($_POST['Name']))
+    $edit = false;
+    $editIdx = -1;
+    $editId = -1;
+
+
+    if(isset($_POST['Name']) && isset($_POST['Description']))
     {
         $Storage->saveProject($Storage->createProject($_POST['Name'], $_POST['Description']));
     }
 
     $projects = $Storage->getAll();
+
+    for($i = 0; $i < count($projects); $i++)
+    {
+        $id = $projects[$i]->getId();
+        $str = "delete$id";
+        if (isset($_POST[$str])) {
+            $Storage->deleteProjectById($_POST[$str]);
+            $projects = $Storage->getAll();
+            break;
+        }
+    }
+
+    for($i = 0; $i < count($projects); $i++)
+    {
+        $id = $projects[$i]->getId();
+        $str = "edit$id";
+        if (isset($_POST[$str])) {
+            $editIdx = $i;
+            $editId = $id;
+            $edit = true;
+            $projects = $Storage->getAll();
+            break;
+        }
+    }
+
     ?>
 
 <html>
@@ -64,25 +95,6 @@
     </div>
 </div>
 
-<div  class="centered">
-    <form action="Projects.php" method="post">
-        <label>Project Name</label>
-        <input type="text" name="Name">
-        <label>Project Description</label>
-        <input type="text" name="Description">
-        <input type="submit" value="Save">
-    </form>
-
-    <?php
-    foreach ($projects as $project){ ?>
-        <div>
-            <h2><?=$project->getTitle()?></h2>
-            <p><?=$project->getDescription()?></p>
-            <button name=""
-        </div>
-    <?php } ?>
-</div>
-
 <div class="split right">
     <div class="centered">
         <h2>DK</h2>
@@ -90,6 +102,81 @@
     </div>
 </div>
 
+<div  class="centered">
+    <?php
+    if(!$edit) { ?>
+    <form action="Projects.php" method="post">
+        <label>Project Name</label>
+        <input type="text" name="Name">
+        <label>Project Description</label>
+        <input type="text" name="Description">
+        <input type="submit" value="Save">
+    </form>
+    <?php
+    }?>
+
+    <?php
+    foreach ($projects as $project){ ?>
+        <div>
+            <?php
+            if(!$edit) { ?>
+                <h2><?=$project->getTitle()?></h2>
+                <p><?=$project->getDescription()?></p>
+
+                <form action="Projects.php" method="POST" id="form1">
+                    <?php
+                    $id = $project->getId();?>
+                    <input type="hidden" name="edit<?=$id?>" value="<?=$id?>" />
+                    <button type="submit">Edit</button>
+                </form>
+
+                <form action="Projects.php" method="POST" id="form1">
+                    <input type="hidden" name="delete<?=$id?>" value="<?=$id?>" />
+                    <button type="submit">Delete</button>
+                </form>
+
+
+            <?php
+            } else {
+                $id = $project->getId();
+                if($editId == $id){ ?>
+                    <form action="Projects.php" method="post">
+                        <label>Project Name</label>
+                         <input type="text" name="Name" value="<?=$project->getTitle()?>">
+                        <label>Project Description</label>
+                        <input type="text" name="Description" value="<?=$project->getDescription()?>">
+                        <input type="submit" value="Save">
+                    </form>
+
+                    <form action="Projects.php" method="POST" id="form1">
+                        <input type="hidden" name="delete<?=$project->getId()?>" value="<?=$project->getId()?>" />
+                        <button type="submit">Delete</button>
+                    </form>
+                <?php
+                } else {?>
+                    <h2><?=$project->getTitle()?></h2>
+                    <p><?=$project->getDescription()?></p>
+
+                    <form action="Projects.php" method="POST" id="form1">
+                        <?php
+                        $id = $project->getId();?>
+                        <input type="hidden" name="edit<?=$id?>" value="<?=$id?>" />
+                        <button type="submit">Edit</button>
+                    </form>
+
+                    <form action="Projects.php" method="POST" id="form1">
+                        <input type="hidden" name="delete<?=$id?>" value="<?=$id?>" />
+                        <button type="submit">Delete</button>
+                    </form>
+                <?php
+                    }
+                }?>
+
+
+            <?php } ?>
+        </div>
+
+</div>
 
 
 
