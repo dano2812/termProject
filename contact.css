@@ -22,13 +22,15 @@
 /* Control the left side*/
 .left {
     left: 0;
-    background-color: white;
+    background-color: #158cf5;
+    /*background-color: white;*/
 }
 
 /* Control the right side*/
 .right {
     right: 0;
-    background-color: white;
+    background-color: #158cf5;
+    /*background-color: white;*/
 }
 
 /* If you want the content centered horizontally and vertically */
