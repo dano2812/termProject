@@ -7,6 +7,10 @@
     $editIdx = -1;
     $editId = -1;
 
+    $errName = false;
+    $errDescription = false;
+    $errId = false;
+
     $projects = $Storage->getAll();
 
     for($i = 0; $i < count($projects); $i++)
@@ -22,17 +26,31 @@
         }
     }
 
-    if(isset($_POST['Name']) && isset($_POST['Description']) && !empty($_POST['Name']) && !empty($_POST['Description']))
+    if(isset($_POST['Name']) && isset($_POST['Description']))
     {
-        $Storage->saveProject($Storage->createProject($_POST['Name'], $_POST['Description']));
-        $projects = $Storage->getAll();
+        $errName = empty($_POST['Name']);
+        $errDescription = empty($_POST['Description']);
+
+        if(!$errName && !$errDescription)
+        {
+            $Storage->saveProject($Storage->createProject($_POST['Name'], $_POST['Description']));
+            $projects = $Storage->getAll();
+        }
     }
 
     if(isset($_POST['NameEdit']) && isset($_POST['DescriptionEdit']) && isset($_POST['ID']) &&
         !empty($_POST['NameEdit']) && !empty($_POST['DescriptionEdit']) && !empty($_POST['ID']))
     {
-        $Storage->updateProject($_POST['ID'], $_POST['NameEdit'], $_POST['DescriptionEdit']);
-        $projects = $Storage->getAll();
+        $errName = empty($_POST['NameEdit']);
+        $errDescription = empty($_POST['DescriptionEdit']);
+        $errId = is_integer($_POST['ID']);
+
+        if(!$errName && !$errDescription && !$errId)
+        {
+            $Storage->updateProject($_POST['ID'], $_POST['NameEdit'], $_POST['DescriptionEdit']);
+            $projects = $Storage->getAll();
+        }
+
     }
 
     for($i = 0; $i < count($projects); $i++)
@@ -47,7 +65,6 @@
     }
 
     ?>
-
 <html>
 <head>
     <meta charset="UTF-8">
@@ -114,12 +131,23 @@
     if(!$edit) { ?>
         <form action="Projects.php" method="post">
             <div class="form-group projname">
-                <label for="exampleInputEmail1">Project name</label>
-                <input type="text" name="Name" class="form-control" id="ProjName" aria-describedby="emailHelp">
+                <label for="ProjName" >Project name</label>
+                <input type="text" name="Name" class="form-control" id="ProjName" aria-describedby="emailHelp" placeholder="Template project">
+
+                <?php
+                if($errName) {?>
+                    <small id="passwordHelp" class="text-danger">Project name can't be empty!</small>
+                <?php
+                }?>
             </div>
             <div class="form-group projdesription">
-                <label for="exampleInputPassword1">Project description</label>
-                <input type="text" name="Description" class="form-control" id="ProjDescription">
+                <label for="ProjDescription">Project description</label>
+                <input type="text" name="Description" class="form-control" id="ProjDescription" placeholder="Template description">
+                <?php
+                if($errDescription) {?>
+                    <small id="passwordHelp" class="text-danger">Project description can't be empty!</small>
+                    <?php
+                }?>
             </div>
 
             <button type="submit" class="btn btn-primary">Save</button>
@@ -155,13 +183,23 @@
                 if($editId == $id){ ?>
                     <form action="Projects.php" method="post">
                         <div class="form-group ">
-                            <label for="exampleInputEmail1">Project name</label>
-                            <input type="text" name="NameEdit" class="form-control projname" value="<?=$project->getTitle()?>">
+                            <label for="ProjNameEdit">Project name</label>
+                            <input type="text" name="NameEdit" id="ProjNameEdit" class="form-control projname" value="<?=$project->getTitle()?>">
+                            <?php
+                            if($errName) {?>
+                                <small id="passwordHelp" class="text-danger">Project name can't be empty!</small>
+                                <?php
+                            }?>
                         </div>
                         <div class="form-group ">
-                            <label>Project Description</label>
-                             <input type="text" name="DescriptionEdit" class="form-control projdesription" value="<?=$project->getDescription()?>">
+                            <label for="ProjDescriptionEdit">Project Description</label>
+                             <input type="text" name="DescriptionEdit" id="ProjDescriptionEdit" class="form-control projdesription" value="<?=$project->getDescription()?>">
                              <input type="hidden" name="ID" value="<?=$project->getId()?>" />
+                            <?php
+                            if($errDescription) {?>
+                                <small id="passwordHelp" class="text-danger">Project description can't be empty!</small>
+                                <?php
+                            }?>
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
@@ -178,12 +216,13 @@
                         </div>
                     <form action="Projects.php" method="POST" id="form1">
                         <?php
-                        $id = $project->getId();?>
-                        <input type="hidden" name="edit<?=$id?>" value="<?=$id?>" class="form-control projname/>
+                        $id = $project->getId();
+                        ?>
+                        <input type="hidden" name="edit<?=$id?>" value="<?=$id?>" class="form-control projname"/>
                         <button type="submit" class="btn btn-primary">Edit</button>
-                    </form>1
+                    </form>
                     <form action="Projects.php" method="POST" id="form1">
-                        <input type="hidden" name="delete<?=$id?>" value="<?=$id?>" class="form-control projdesription/>
+                        <input type="hidden" name="delete<?=$id?>" value="<?=$id?>" class="form-control projdesription"/>
                         <button type="submit" class="btn btn-primary">Delete</button>
                     </form>
                 <?php
