@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
-
+session_start();
 require "AStorage.php";
 require "Project.php";
+require "user.php";
 
 class DBStorage
 {
@@ -23,7 +24,7 @@ class DBStorage
         }
 
     }
-    public function getAll():array
+    public function getAllProjects():array
     {
         $stmt = $this->pdo->query("select * from projectstable");
         $projects = [];
@@ -69,5 +70,38 @@ class DBStorage
         $sql = 'UPDATE projectstable SET projectstable.name=?, projectstable.description=? WHERE projectstable.id=?';
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([$name, $description, $id]);
+    }
+
+    public function createUser(string $name, string $password): User
+    {
+        return new User($name, $password);
+    }
+
+    public function saveUser(User $user)
+    {
+        $stmt = $this->pdo->prepare("INSERT INTO users (name, password, isadmin) VALUES(?,?,?)");
+        $stmt->execute([$user->getName(), $user->getPassword(), 0]);
+    }
+
+    public function checkUser(string $name, string $password): User
+    {
+        $stmt = $this->pdo->prepare("SELECT * users where name=?");
+        $stmt->execute([$name]);
+        //$stmt = $this->pdo->query("select * from users");
+        $user = new User("","");
+        //$projectCnt = 0;
+        while($row = $stmt->fetch())
+        {
+            if(password_hash($password, PASSWORD_DEFAULT) == $row['password'])
+            {
+                $user = new User($row['name'],$row['password']);
+                $user->setAdmin($row['isadmin']);
+                $user->setPassword($row['password']);
+            }
+
+
+        }
+
+        return $user;
     }
 }

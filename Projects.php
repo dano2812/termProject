@@ -11,7 +11,7 @@
     $errDescription = false;
     $errId = false;
 
-    $projects = $Storage->getAll();
+    $projects = $Storage->getAllProjects();
 
     for($i = 0; $i < count($projects); $i++)
     {
@@ -21,7 +21,7 @@
             $editIdx = $i;
             $editId = $id;
             $edit = TRUE;
-            $projects = $Storage->getAll();
+            $projects = $Storage->getAllProjects();
             break;
         }
     }
@@ -34,7 +34,7 @@
         if(!$errName && !$errDescription)
         {
             $Storage->saveProject($Storage->createProject($_POST['Name'], $_POST['Description']));
-            $projects = $Storage->getAll();
+            $projects = $Storage->getAllProjects();
         }
     }
 
@@ -48,7 +48,7 @@
         if(!$errName && !$errDescription && !$errId)
         {
             $Storage->updateProject($_POST['ID'], $_POST['NameEdit'], $_POST['DescriptionEdit']);
-            $projects = $Storage->getAll();
+            $projects = $Storage->getAllProjects();
         }
 
     }
@@ -59,13 +59,14 @@
         $str = "delete$id";
         if (isset($_POST[$str])) {
             $Storage->deleteProjectById($_POST[$str]);
-            $projects = $Storage->getAll();
+            $projects = $Storage->getAllProjects();
             break;
         }
     }
 
     ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>DK-Semestralny projekt Projects</title>
@@ -104,8 +105,8 @@
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login </button>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sing Up </button>
+                <a class="btn btn-outline-success my-2 my-sm-0" href="login.php" type="submit">Log in </a>
+                <a class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign up </a>
             </form>
         </div>
 
@@ -164,8 +165,6 @@
                         <h2><?=$project->getTitle()?></h2>
                         <p><?=$project->getDescription()?></p>
                     </div>
-
-
                 <form action="Projects.php" method="POST" id="form1">
                     <?php
                     $id = $project->getId();?>
