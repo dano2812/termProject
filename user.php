@@ -38,7 +38,7 @@ class User
         return ($this->isAdmin == 0) ? false : true;
     }
 
-    public function setAdmin(int $admin)
+    public function setAdmin(string $admin)
     {
         $this->isAdmin = $admin;
     }

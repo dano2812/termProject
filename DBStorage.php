@@ -57,13 +57,6 @@ class DBStorage
         $stmt= $this->pdo->prepare($sql);
         $stmt->execute([$id]);
     }
-/*
-    public function deleteProjectByName($name)
-    {
-        $sql = 'DELETE FROM projectstable WHERE name=?';
-        $stmt= $this->pdo->prepare($sql);
-        $stmt->execute([$name]);
-    }*/
 
     public function updateProject(int $id, string $name, string $description)
     {
@@ -77,31 +70,38 @@ class DBStorage
         return new User($name, $password);
     }
 
-    public function saveUser(User $user)
+    public function saveUser(User $u): bool
     {
-        $stmt = $this->pdo->prepare("INSERT INTO users (name, password, isadmin) VALUES(?,?,?)");
-        $stmt->execute([$user->getName(), $user->getPassword(), 0]);
+        $stmt = $this->pdo->prepare("SELECT * from users where name=?");
+        $stmt->execute([$u->getName()]);
+        if(!($row = $stmt->fetch()))
+        {
+            return false;
+        }
+        $sql = 'INSERT INTO users (name, password, isadmin) VALUES(?,?,?)';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$u->getName(), $u->getPassword(), 0]);
+        return true;
     }
 
     public function checkUser(string $name, string $password): User
     {
-        $stmt = $this->pdo->prepare("SELECT * users where name=?");
+        $sql = 'SELECT * from users where name=?';
+        $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$name]);
-        //$stmt = $this->pdo->query("select * from users");
-        $user = new User("","");
-        //$projectCnt = 0;
+        $u = new User("","");
+
         while($row = $stmt->fetch())
         {
-            if(password_hash($password, PASSWORD_DEFAULT) == $row['password'])
+            if(password_verify($password, $row['password'] ))
             {
-                $user = new User($row['name'],$row['password']);
-                $user->setAdmin($row['isadmin']);
-                $user->setPassword($row['password']);
+                $u = new User($row['name'],$password);
+                $u->setAdmin($row['isadmin']);
+                $u->setPassword($row['password']);
+                return $u;
             }
-
-
         }
 
-        return $user;
+        return $u;
     }
 }

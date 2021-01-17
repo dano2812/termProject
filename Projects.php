@@ -106,7 +106,7 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <a class="btn btn-outline-success my-2 my-sm-0" href="login.php" type="submit">Log in </a>
-                <a class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign up </a>
+                <a class="btn btn-outline-success my-2 my-sm-0" href="signup.php" type="submit">Sign up </a>
             </form>
         </div>
 

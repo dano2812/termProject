@@ -48,7 +48,7 @@ $Storage = new DBStorage();
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <a class="btn btn-outline-success my-2 my-sm-0" href="login.php" type="submit">Log in </a>
-                    <a class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign up </a>
+                    <a class="btn btn-outline-success my-2 my-sm-0" href="signup.php" type="submit">Sign up </a>
                 </form>
             </div>
 
@@ -70,14 +70,15 @@ $Storage = new DBStorage();
     </div>
 
     <div  class="leftMiddle">
-        <div id="message"></div>
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+        <h1 class="h3 mb-3 fw-normal">Please log in</h1>
         <label for="inputEmail" class="visually-hidden projname">Email address</label>
         <input type="email" class="form-control projname" id="txt_uname" name="txt_uname" placeholder="Email address" required="" autofocus="">
         <label for="inputPassword" class="visually-hidden">Password</label>
         <input type="password" class="form-control projname" id="txt_pwd" name="txt_pwd" placeholder="Password" required="">
-        <div class="checkbox mb-3">
-        </div>
+        <div class="checkbox mb-3"></div>
+        <div id="message" class="text-danger"></div>
+        <div class="checkbox mb-3"></div>
         <input class="btn-primary submitlogin" value="Submit" type="button" name="but_submit" id="but_submit"></input>
     </div>
 </body>

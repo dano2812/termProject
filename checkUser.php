@@ -1,19 +1,22 @@
 <?php
 
-include "DBStorage.php";
+require "DBStorage.php";
 $Storage = new DBStorage();
 
 $uname = $_POST['username'];
 $password = $_POST['password'];
 
-if ($uname != "" && $password != ""){
-
+if ($uname != "" && $password != "")
+{
     $user = $Storage->checkUser($uname, $password);
 
-    if($user->getName() != ""){
+    if($user->getName() != "")
+    {
         $_SESSION['uname'] = $uname;
         echo 1;
-    }else{
+    }
+    else
+    {
        echo 0;
     }
 

@@ -1,6 +1,8 @@
 
-$(document).ready(function(){
-    $("#but_submit").click(function(){
+$(document).ready(function()
+{
+    $("#but_submit").click(function()
+    {
         let username = ($("#txt_uname").val() === undefined) ? "" : $("#txt_uname").val().trim();
         let password = ($("#txt_pwd").val() === undefined)? "" : $("#txt_pwd").val().trim();
         let password2 = ($("#txt_pwd2").val() === undefined)? "" : $("#txt_pwd2").val().trim();
@@ -12,16 +14,22 @@ $(document).ready(function(){
             return;
         }
 
-        if( username !== "" && password !== "" ){
-            $.ajax({
-                url:'checkUser.php',
+        if( username !== "" && password !== "" )
+        {
+            $.ajax(
+                {
+                url:'createUser.php',
                 type:'post',
                 data:{username:username,password:password},
-                success:function(response){
+                success:function(response)
+                {
                     let msg = "";
-                    if(response == 1){
+                    if(response == 1)
+                    {
                         window.location = "login.php";
-                    }else{
+                    }
+                    else
+                    {
                         msg = "User already exists";
                     }
                     $("#message").html(msg);
