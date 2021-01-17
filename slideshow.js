@@ -1,6 +1,6 @@
-var slideIndex = -1;
-var slidesArr = ["building1.jpg", "building2.jpg", "building3.jpg", "building4.jpg"];
-var stopLastTime = 0;
+let slideIndex = -1;
+//var slidesArr = ["building1.jpg", "building2.jpg", "building3.jpg", "building4.jpg"];
+let stopLastTime = 0;
 showSlides();
 
 // Next/previous controls
@@ -10,13 +10,13 @@ function plusSlides(n) {
 }
 
 // Thumbnail image controls
-function currentSlide(n) {
+/*function currentSlide(n) {
     showSlides(slideIndex = n);
-}
+}*/
 
 function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
@@ -24,7 +24,7 @@ function showSlides() {
     if (slideIndex > slides.length) {slideIndex = 1}
     slides[slideIndex-1].style.display = "block";
 
-    if(stopLastTime == 0)
+    if(stopLastTime === 0)
     {
         setTimeout(showSlides, 4000);
     }

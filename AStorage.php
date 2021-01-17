@@ -1,7 +1,6 @@
 <?php
 declare(strict_types=1);
 
-
 class AStorage
 {
     private string $filepath = "proj.csv";

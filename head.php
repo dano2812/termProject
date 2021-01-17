@@ -1,12 +1,7 @@
 <?php
 
 session_start();
-if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
-    // redirect to your login page
-    //exit();
-}
-else
-{
+if (!(!isset($_SESSION['username']) || empty($_SESSION['username']))) {
     $_SESSION['uname'] = $_SESSION['uname'];
 }
 ?>

@@ -44,15 +44,15 @@ $Storage = new DBStorage();*/
 <div  class="leftMiddle">
     <div id="message"></div>
     <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
-    <label for="inputEmail" class="visually-hidden projname">User name</label>
+    <label for="txt_uname" class="visually-hidden projname">User name</label>
     <input type="email" class="form-control projname" id="txt_uname" name="txt_uname" placeholder="User name" required="" autofocus="">
-    <label for="inputPassword" class="visually-hidden">Password</label>
+    <label for="txt_pwd" class="visually-hidden">Password</label>
     <input type="password" class="form-control projname" id="txt_pwd" name="txt_pwd" placeholder="Password" required="">
-    <label for="inputPassword2" class="visually-hidden">Password again</label>
+    <label for="txt_pwd2" class="visually-hidden">Password again</label>
     <input type="password" class="form-control projname" id="txt_pwd2" name="txt_pwd2" placeholder="Password" required="">
     <div class="checkbox mb-3">
     </div>
-    <input class="btn-primary submitlogin" value="Submit" type="button" name="but_submit" id="but_submit"></input>
+    <input class="btn-primary submitlogin" value="Submit" type="button" name="but_submit" id="but_submit">
 </div>
 </body>
 </html>
