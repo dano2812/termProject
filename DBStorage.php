@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-session_start();
+//session_start();
 require "AStorage.php";
 require "Project.php";
 require "user.php";
@@ -74,7 +74,7 @@ class DBStorage
     {
         $stmt = $this->pdo->prepare("SELECT * from users where name=?");
         $stmt->execute([$u->getName()]);
-        if(!($row = $stmt->fetch()))
+        if(($row = $stmt->fetch()))
         {
             return false;
         }

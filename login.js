@@ -24,6 +24,11 @@ $(document).ready(function(){
                 }
             });
         }
+        else
+        {
+            let msg = "Username and password have to be filled";
+            $("#message").html(msg);
+        }
     });
 });
 

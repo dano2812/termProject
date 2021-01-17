@@ -1,6 +1,7 @@
 <?php
 require "DBStorage.php";
-$Storage = new DBStorage();
+//$Storage = new DBStorage();
+//session_start();
 ?>
 
 <!DOCTYPE html>
@@ -22,38 +23,9 @@ $Storage = new DBStorage();
     <script src="login.js" type="text/javascript"></script>
 </head>
 <body>
-
-    <div class="pageWrapper">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">DK</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="Projects.php">Projects <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="contact.html">Contact <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="career.html">Career <span class="sr-only">(current)</span></a>
-                    </li>
-
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <a class="btn btn-outline-success my-2 my-sm-0" href="login.php" type="submit">Log in </a>
-                    <a class="btn btn-outline-success my-2 my-sm-0" href="signup.php" type="submit">Sign up </a>
-                </form>
-            </div>
-
-        </nav>
-    </div>
+<?php
+require "head.php"
+?>
 
     <div class="split left">
         <div class="centered">
@@ -72,14 +44,14 @@ $Storage = new DBStorage();
     <div  class="leftMiddle">
 
         <h1 class="h3 mb-3 fw-normal">Please log in</h1>
-        <label for="inputEmail" class="visually-hidden projname">Email address</label>
-        <input type="email" class="form-control projname" id="txt_uname" name="txt_uname" placeholder="Email address" required="" autofocus="">
-        <label for="inputPassword" class="visually-hidden">Password</label>
+        <label for="txt_uname" class="visually-hidden projname">User name</label>
+        <input type="email" class="form-control projname" id="txt_uname" name="txt_uname" placeholder="User name" required="" autofocus="">
+        <label for="txt_pwd" class="visually-hidden">Password</label>
         <input type="password" class="form-control projname" id="txt_pwd" name="txt_pwd" placeholder="Password" required="">
         <div class="checkbox mb-3"></div>
         <div id="message" class="text-danger"></div>
         <div class="checkbox mb-3"></div>
-        <input class="btn-primary submitlogin" value="Submit" type="button" name="but_submit" id="but_submit"></input>
+        <input class="btn-primary submitlogin" value="Submit" type="button" name="but_submit" id="but_submit">
     </div>
 </body>
 </html>

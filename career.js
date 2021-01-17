@@ -1,9 +1,9 @@
 
 
 function setCareerDescription(n) {
-    var i;
-    var jobs = document.getElementsByClassName("job");
-    var btns = document.getElementsByClassName("jobbtn");
+    let i;
+    let jobs = document.getElementsByClassName("job");
+    let btns = document.getElementsByClassName("jobbtn");
 
     for (i = 0; i < jobs.length; i++) {
         jobs[i].style.display = "none";

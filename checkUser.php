@@ -12,6 +12,7 @@ if ($uname != "" && $password != "")
 
     if($user->getName() != "")
     {
+        session_start();
         $_SESSION['uname'] = $uname;
         echo 1;
     }

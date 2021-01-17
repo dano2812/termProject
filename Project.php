@@ -1,6 +1,5 @@
 <?php
 
-
 class Project
 {
     private string $name;

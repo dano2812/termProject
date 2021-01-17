@@ -13,73 +13,46 @@
     <script src="slideshow.js"></script>
 </head>
 <body>
-<div class="pageWrapper">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">DK</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="Projects.php">Projects <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="contact.html">Contact <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="career.html">Career <span class="sr-only">(current)</span></a>
-                </li>
+<?php
+require "head.php"
+?>
 
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <a class="btn btn-outline-success my-2 my-sm-0" href="login.php" type="submit">Log in </a>
-                <a class="btn btn-outline-success my-2 my-sm-0" href="signup.php" type="submit">Sign up </a>
-            </form>
-        </div>
-    </nav>
-
-    <div class="slideshow-container">
-        <!-- Full-width images with number and caption text -->
-        <div class="mySlides fade">
-            <div class="numbertext">1 / 4</div>
-            <img src="Resources/building4.jpg" style="width:100%" alt="img1">
-            <!--<div class="text">Caption One</div>-->
-        </div>
-        <div class="mySlides fade">
-            <div class="numbertext">2 / 4</div>
-            <img src="Resources/building2.jpg" style="width:100%" alt="img2">
-            <!--div class="text">Caption Two</div>-->
-        </div>
-        <div class="mySlides fade">
-            <div class="numbertext">3 / 4</div>
-            <img src="Resources/building3.jpg" style="width:100%" alt="img3">
-            <!--<div class="text">Caption Three</div>-->
-        </div>
-        <div class="mySlides fade">
-            <div class="numbertext">4 / 4</div>
-            <img src="Resources/building1.jpg" style="width:100%" alt="img4">
-            <!--<div class="text">Caption Three</div>-->
-        </div>
+<div class="slideshow-container">
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 4</div>
+        <img src="Resources/building4.jpg" style="width:100%" alt="img1">
+        <!--<div class="text">Caption One</div>-->
     </div>
-
-    <div class="centered">
-        <div class="text">Create your own home</div>
-        <div>
-            <a class="btn btn-secondary" href="Projects.php" role="button">Projects</a>
-        </div>
-
+    <div class="mySlides fade">
+        <div class="numbertext">2 / 4</div>
+        <img src="Resources/building2.jpg" style="width:100%" alt="img2">
+        <!--div class="text">Caption Two</div>-->
     </div>
-    <!-- Next and previous buttons -->
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    <br>
+    <div class="mySlides fade">
+        <div class="numbertext">3 / 4</div>
+        <img src="Resources/building3.jpg" style="width:100%" alt="img3">
+        <!--<div class="text">Caption Three</div>-->
+    </div>
+    <div class="mySlides fade">
+        <div class="numbertext">4 / 4</div>
+        <img src="Resources/building1.jpg" style="width:100%" alt="img4">
+        <!--<div class="text">Caption Three</div>-->
+    </div>
 </div>
 
+<div class="centered">
+    <div class="text">Create your own home</div>
+    <div>
+        <a class="btn btn-secondary" href="Projects.php" role="button">Projects</a>
+    </div>
+
+</div>
+<!-- Next and previous buttons -->
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+<br>
 
 <script>
     showSlides(0);
