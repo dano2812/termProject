@@ -31,12 +31,12 @@
         </div>
     </div>
 
-    <div class="leftTop">
+    <div class="leftTop jobbtn">
         <h2>Position available:</h2>
         <ul class="list-group list-group-horizontal-md">
-            <li class="list-group-item list-group-item-primary jobbtn" onclick="setCareerDescription(0)">Junior Architect</li>
-            <li class="list-group-item list-group-item-primary jobbtn" onclick="setCareerDescription(1)">Senior Construction Engeneer</li>
-            <li class="list-group-item list-group-item-primary jobbtn" onclick="setCareerDescription(2)">Junior Construction Engeneer</li>
+            <li class="list-group-item list-group-item-primary " onclick="setCareerDescription(0)">Junior Architect</li>
+            <li class="list-group-item list-group-item-primary " onclick="setCareerDescription(1)">Senior Construction Engeneer</li>
+            <li class="list-group-item list-group-item-primary " onclick="setCareerDescription(2)">Junior Construction Engeneer</li>
         </ul>
 
         <div class="job">

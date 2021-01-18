@@ -60,12 +60,12 @@ if (isset($_SESSION['uname']))
     </div>
 </div>
 
-<div  class="leftMiddle" >
+<div  class="leftMiddle projdesription" >
     <div class="">
-        <nav id="navbar-example2" class="navbar navbar-light bg-light px-3 projdesription">
+        <nav id="navbar-example2" class="navbar navbar-light bg-light px-3 ">
             <a class="navbar-brand" href="#">Projects</a>
         </nav>
-        <div class="projdesription overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light " data-bs-target="#navbar-example2" data-bs-offset="0" tabindex="0">
+        <div class="projdesription1 overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light " data-bs-target="#navbar-example2" data-bs-offset="0" tabindex="0">
             <?php
             if($isAdmin){?>
                 <h1 class="h3 mb-3 fw-normal">New project</h1>
