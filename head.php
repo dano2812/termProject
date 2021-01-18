@@ -31,11 +31,11 @@ if (!(!isset($_SESSION['username']) || empty($_SESSION['username']))) {
             <form class="form-inline my-2 my-lg-0">
             <?php
             if(isset($_SESSION['uname'])){ ?>
-                <label ><label><?php echo $_SESSION['uname']; ?></label></label>
-                <a class="btn btn-outline-success my-2 my-sm-0" href="logout.php" type="submit">Log out </a>
+                <label><?php echo $_SESSION['uname']; ?></label>
+                <a class="btn btn-outline-success my-2 my-sm-0" href="logout.php">Log out </a>
             <?php } else { ?>
-                <a class="btn btn-outline-success my-2 my-sm-0" href="login.php" type="submit">Log in </a>
-                <a class="btn btn-outline-success my-2 my-sm-0" href="signup.php" type="submit">Sign up </a>
+                <a class="btn btn-outline-success my-2 my-sm-0" href="login.php" >Log in </a>
+                <a class="btn btn-outline-success my-2 my-sm-0" href="signup.php" >Sign up </a>
             <?php } ?>
             </form>
         </div>
