@@ -45,7 +45,7 @@ require "head.php"
 <div class="centered">
     <div class="text">Create your own home</div>
     <div>
-        <a class="btn btn-secondary" href="Projects.php" role="button">Projects</a>
+        <a class="btn btn-secondary" href="ProjectsAlt.php" role="button">Projects</a>
     </div>
 
 </div>

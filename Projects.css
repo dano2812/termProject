@@ -4,6 +4,7 @@
     left: 20%;
     z-index: 1;
     margin-top: 10px;
+    height: 100%;
 }
 
 .projname {
@@ -11,4 +12,9 @@
 }
 .projdesription {
     max-width: 60%;
+    max-height: 80vh;
+}
+
+.projectscroll{
+    height: 100%;
 }

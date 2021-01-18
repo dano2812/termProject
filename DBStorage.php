@@ -106,6 +106,19 @@ class DBStorage
         return $u;
     }
 
+    public function isAdmin(string $name):bool
+    {
+        $sql = 'SELECT * from users where name=?';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$name]);
+
+        if($row = $stmt->fetch())
+        {
+            return ($row['isadmin'] == 1);
+        }
+        return false;
+    }
+
     public function createQuestion(Question $q)
     {
         $sql = 'INSERT INTO questions (mail, text) VALUES(?,?)';

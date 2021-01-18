@@ -5,12 +5,14 @@ class Project
     private string $name;
     private string $description;
     private $id;
+    private bool $toEdit;
 
     public function __construct(string $title,string $description)
     {
         $this->name = $title;
         $this->description = $description;
         $this->id = -1;
+        $this->toEdit = false;
     }
 
 
@@ -36,6 +38,19 @@ class Project
     public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @return bool
+     */
+    public function Edit() : bool
+    {
+        return $this->toEdit;
+    }
+
+    public function setEdit(bool $e)
+    {
+        $this->toEdit = $e;
     }
 
     /**
