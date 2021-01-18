@@ -1,6 +1,6 @@
 <?php
 
-require "DBStorage.php";
+require "BaseClasses/DBStorage.php";
 $Storage = new DBStorage();
 
 $uname = $_POST['username'];

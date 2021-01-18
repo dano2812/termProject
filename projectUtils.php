@@ -1,5 +1,5 @@
 <?php
-require "DBStorage.php";
+require "BaseClasses/DBStorage.php";
 $Storage = new DBStorage();
 
 if(isset($_POST['newproj']) && $_POST['newproj'] === "newproj" &&
@@ -8,7 +8,7 @@ if(isset($_POST['newproj']) && $_POST['newproj'] === "newproj" &&
     $Storage->saveProject($Storage->createProject($_POST['projname'], $_POST['descr']));
     echo 1;
 }
-else if(isset($_POST['delproj']) && $_POST['delproj'] === "delproj")
+else if(isset($_POST['delproj']))
 {
     $Storage->deleteProjectById($_POST["id"]);
     echo 1;

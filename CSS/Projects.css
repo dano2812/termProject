@@ -18,3 +18,20 @@
 .projectscroll{
     height: 100%;
 }
+
+.deletebtn{
+    margin-bottom: 20px;
+}
+
+.spaceup{
+    margin-top: 20px;
+}
+
+.spacedown{
+    margin-bottom: 20px;
+}
+
+.spaceupdown{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

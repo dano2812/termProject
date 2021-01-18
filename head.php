@@ -26,17 +26,16 @@ if (!(!isset($_SESSION['username']) || empty($_SESSION['username']))) {
                 <li class="nav-item active">
                     <a class="nav-link" href="career.php">Career <span class="sr-only">(current)</span></a>
                 </li>
-
             </ul>
             <form class="form-inline my-2 my-lg-0">
-            <?php
-            if(isset($_SESSION['uname'])){ ?>
-                <label><?php echo $_SESSION['uname']; ?></label>
-                <a class="btn btn-outline-success my-2 my-sm-0" href="logout.php">Log out </a>
-            <?php } else { ?>
-                <a class="btn btn-outline-success my-2 my-sm-0" href="login.php" >Log in </a>
-                <a class="btn btn-outline-success my-2 my-sm-0" href="signup.php" >Sign up </a>
-            <?php } ?>
+                <?php
+                if(isset($_SESSION['uname'])){ ?>
+                    <label class="spaceright"><?php echo $_SESSION['uname']; ?></label>
+                    <a class="btn btn-outline-success my-2 my-sm-0" href="logout.php">Log out </a>
+                <?php } else { ?>
+                    <a class="btn btn-outline-success my-2 my-sm-0 spaceright" href="login.php" >Log in </a>
+                    <a class="btn btn-outline-success my-2 my-sm-0" href="signup.php" >Sign up </a>
+                <?php } ?>
             </form>
         </div>
     </nav>

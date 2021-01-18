@@ -125,4 +125,18 @@ class DBStorage
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$q->getMail(), $q->getText()]);
     }
+
+    public function etQuestionsByMail(string $mail) : array
+    {
+        $sql = 'SELECT * from questions where mail=?';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$mail]);
+
+        $ques = [];
+        while($row = $stmt->fetch())
+        {
+            $ques[] = new Question($row['mail'], $row['text']);
+        }
+        return $ques;
+    }
 }

@@ -1,6 +1,5 @@
 <?php
-//require "Question.php";
-require "DBStorage.php";
+require "BaseClasses/DBStorage.php";
 
 $mail = $_POST['mail'];
 $text = $_POST['text'];

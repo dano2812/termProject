@@ -1,5 +1,5 @@
 <?php
-require "DBStorage.php";
+require "BaseClasses/DBStorage.php";
 //$Storage = new DBStorage();
 //session_start();
 ?>
@@ -11,10 +11,10 @@ require "DBStorage.php";
     <title>DK-Semestralny projekt Projects</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="contact.css">
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="Projects.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="CSS/contact.css">
+    <link rel="stylesheet" href="CSS/home.css">
+    <link rel="stylesheet" href="CSS/Projects.css">
+    <link rel="stylesheet" href="CSS/login.css">
     <!-- jQuery and JS bundle w/ Popper.js -->
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -1,5 +1,5 @@
 <?php
-require "DBStorage.php";
+require "BaseClasses/DBStorage.php";
 $Storage = new DBStorage();
 $projects = $Storage->getAllProjects();
 $editId = -1;
@@ -26,9 +26,9 @@ foreach($projects as $project)
     <title>DK-Semestralny projekt Projects</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="contact.css">
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="Projects.css">
+    <link rel="stylesheet" href="CSS/contact.css">
+    <link rel="stylesheet" href="CSS/home.css">
+    <link rel="stylesheet" href="CSS/Projects.css">
     <!-- jQuery and JS bundle w/ Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -74,7 +74,7 @@ if (isset($_SESSION['uname']))
                 <label for="txt_dsc" class="visually-hidden">Desription</label>
                 <input type="text" class="form-control projname" id="txt_dsc" name="txt_dsc" placeholder="Project description" required="">
                 <div id="message" class="text-danger"></div>
-                <input class="btn btn-primary" value="Save" type="button" name="Save_btn" id="Save_btn">
+                <input class="btn btn-primary spaceupdown" value="Save" type="button" name="Save_btn" id="Save_btn">
             <?php } ?>
             <?php
             foreach ($projects as $project){
@@ -85,7 +85,7 @@ if (isset($_SESSION['uname']))
                         <label for="txt_edsc" class="visually-hidden">Desription</label>
                         <input type="text" class=" form-control projname" id="txt_edsc" name="<?=$project->getId()?>" value="<?=$project->getDescription()?>" required="">
                         <div id="message" class="text-danger"></div>
-                        <input class=" btn btn-primary" value="Save" type="button" name="<?=$project->getId()?>" id="SaveEdit_btn">
+                        <input class=" btn btn-primary spaceupdown" value="Save" type="button" name="<?=$project->getId()?>" id="SaveEdit_btn">
                     </div>
                 <?php } else { ?>
                     <h4 id="<?=$project->getId()?>"><?=$project->getTitle()?></h4>
@@ -94,13 +94,12 @@ if (isset($_SESSION['uname']))
                 <?php
                 if($isAdmin && !($project->getId() == $editId)) { ?>
                     <form action="ProjectsAlt.php" method="post">
-                        <button type="submit" class="btn btn-primary" name="<?=$project->getId()?>" id = "Edit_btn">Edit</button>
+                        <button type="submit" class="btn btn-primary spacedown" name="<?=$project->getId()?>" id="Edit_btn<?=$project->getId()?>">Edit</button>
                     </form>
-                    <button type="submit" class="btn btn-primary" name="<?=$project->getId()?>" id = "Delete_btn">Delete</button>
+                    <button class="btn btn-primary deletebtn"  name="<?=$project->getId()?>" type="button" id="dle<?=$project->getId()?>" >Delete</button>
                 <?php } ?>
             <?php } ?>
         </div>
     </div>
 </div>
-
 </body>

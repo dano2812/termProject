@@ -6,28 +6,38 @@ $(document).ready(function(){
         let projname = ($("#txt_pename").val() === undefined) ? "" : $("#txt_pename").val().trim();
         let descr = ($("#txt_edsc").val() === undefined)? "" : $("#txt_edsc").val().trim();
 
-        if( editproj !== "" )
-        {
-            $.ajax({
-                url:'projectUtils.php',
-                type:'post',
-                data:{editproj:editproj, projname:projname, descr:descr},
-                success:function(response){
-                    if(response == 1)
-                    {
-                        window.location = "ProjectsAlt.php";
+        if(projname != "" && descr != "") {
+            if (editproj !== "") {
+                $.ajax({
+                    url: 'projectUtils.php',
+                    type: 'post',
+                    data: {editproj: editproj, projname: projname, descr: descr},
+                    success: function (response) {
+                        if (response == 1) {
+                            window.location = "ProjectsAlt.php";
+                        }else
+                        {
+                            msg = "Cannot add project to database";
+                        }
+                        $("#message").html(msg);
                     }
-                }
-            });
+                });
+            }
+        }
+        else
+        {
+            msg = "Project name and description cant be empty!";
+            $("#message").html(msg);
         }
     });
 });
 
 $(document).ready(function(){
-    $("#Delete_btn").click(function()
+    $(".deletebtn").click(function()
     {
         let id = $(this).attr('name');
         let delproj = "delproj";
+        let msg = "";
         if( id !== "" )
         {
             $.ajax({
@@ -35,7 +45,6 @@ $(document).ready(function(){
                 type:'post',
                 data:{id:id,delproj:delproj},
                 success:function(response){
-                    let msg = "";
                     if(response == 1)
                     {
                         window.location = "ProjectsAlt.php";
@@ -91,7 +100,6 @@ $(document).ready(function(){
                 msg = "Project name and description cant be empty!";
                 $("#message").html(msg);
             }
-
         }
     });
 });
