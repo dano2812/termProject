@@ -9,7 +9,7 @@ $(document).ready(function()
 
         if(password !== password2)
         {
-            let msg = "Passwords does not match";
+            let msg = "Passwords don't match";
             $("#message").html(msg);
             return;
         }
@@ -35,6 +35,11 @@ $(document).ready(function()
                     $("#message").html(msg);
                 }
             });
+        }
+        else
+        {
+            let msg = "All fields have to filled";
+            $("#message").html(msg);
         }
     });
 });

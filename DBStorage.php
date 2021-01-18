@@ -4,6 +4,7 @@ declare(strict_types=1);
 require "AStorage.php";
 require "Project.php";
 require "user.php";
+require "Question.php";
 
 class DBStorage
 {
@@ -103,5 +104,12 @@ class DBStorage
         }
 
         return $u;
+    }
+
+    public function createQuestion(Question $q)
+    {
+        $sql = 'INSERT INTO questions (mail, text) VALUES(?,?)';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$q->getMail(), $q->getText()]);
     }
 }

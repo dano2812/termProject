@@ -1,5 +1,4 @@
 
-
 function setCareerDescription(n) {
     let i;
     let jobs = document.getElementsByClassName("job");
