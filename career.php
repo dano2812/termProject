@@ -11,7 +11,7 @@
     <!-- jQuery and JS bundle w/ Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <script src="career.js"></script>
+    <script src="js/career.js"></script>
 </head>
 <body>
 <?php
@@ -31,12 +31,12 @@
         </div>
     </div>
 
-    <div class="leftTop jobbtn">
+    <div class="leftTop ">
         <h2>Position available:</h2>
-        <ul class="list-group list-group-horizontal-md">
-            <li class="list-group-item list-group-item-primary " onclick="setCareerDescription(0)">Junior Architect</li>
-            <li class="list-group-item list-group-item-primary " onclick="setCareerDescription(1)">Senior Construction Engeneer</li>
-            <li class="list-group-item list-group-item-primary " onclick="setCareerDescription(2)">Junior Construction Engeneer</li>
+        <ul class="list-group list-group-horizontal-md jobmaxsize">
+            <li class="list-group-item list-group-item-primary jobbtn" onclick="setCareerDescription(0)">Junior Architect</li>
+            <li class="list-group-item list-group-item-primary jobbtn" onclick="setCareerDescription(1)">Senior Construction Engeneer</li>
+            <li class="list-group-item list-group-item-primary jobbtn" onclick="setCareerDescription(2)">Junior Construction Engeneer</li>
         </ul>
 
         <div class="job">

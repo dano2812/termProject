@@ -13,8 +13,11 @@
     display: none;
     max-width: 60%;
 }
-.jobbtn {
+.jobmaxsize{
     max-width: 60%;
+}
+.jobbtn {
+    max-width: 100%;
 }
 
 .jobbtn:hover {
